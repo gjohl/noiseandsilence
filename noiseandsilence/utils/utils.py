@@ -36,6 +36,7 @@ def try_else_value(fn, value=''):
             return value
     return wrapper
 
+
 # Web Scraping-------------------------------------------------
 def get_soup_from_url(url, parser="html.parser"):
     '''
@@ -47,6 +48,7 @@ def get_soup_from_url(url, parser="html.parser"):
     soup = BeautifulSoup(response.content, "html.parser")
     return soup
     
+
 # UK data
 def get_uk_chart_data(url, skip_end=None):
     '''
@@ -95,6 +97,17 @@ def get_lyrics(title, artist):
     song_object = genius.search_song(title, artist)
     lyrics = song_object.lyrics
     return lyrics
+
+
+def add_lyrics_to_dataframe(df):
+    '''
+    Given a DataFrame containing title and artist, append column for lyrics as a string
+    :df:
+    '''
+    lyrics = df.copy()
+    lyrics['lyrics'] = list(map(try_else_value(get_lyrics,''), lyrics['title'], lyrics['artist']))
+    return lyrics
+
 
 
 # Spotify API----------------------------------------------
