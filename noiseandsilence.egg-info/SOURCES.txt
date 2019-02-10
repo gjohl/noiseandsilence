@@ -1,0 +1,7 @@
+README.md
+setup.py
+noiseandsilence/__init__.py
+noiseandsilence.egg-info/PKG-INFO
+noiseandsilence.egg-info/SOURCES.txt
+noiseandsilence.egg-info/dependency_links.txt
+noiseandsilence.egg-info/top_level.txt
