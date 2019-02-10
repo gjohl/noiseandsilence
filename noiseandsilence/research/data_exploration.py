@@ -46,12 +46,10 @@ uk_data.sort_values(by='weeks', ascending=False)
 #######################
 # Explore lyrics data #
 #######################
+dropped_lyrics = lyrics[lyrics['lyrics'].map(lambda s: len(s))==0]
+print(dropped_lyrics[['title','artist']])
 
 
-
-#################################
-# Song metrics from spotify API #
-#################################
 
 
 ########################
@@ -61,8 +59,8 @@ uk_data.sort_values(by='weeks', ascending=False)
 # https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/
 # https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-analysis/
 
-af_fields = ['danceability', 'energy', 'key', 'loudness', 'mode', 'speechiness', 'acousticness', 'instrumentalness', 'liveness', 'valence', 'tempo', 'duration_ms', 'time_signature']
 
+af_fields = ['danceability', 'energy', 'key', 'loudness', 'mode', 'speechiness', 'acousticness', 'instrumentalness', 'liveness', 'valence', 'tempo', 'duration_ms', 'time_signature']
 
 # Plots all metrics
 plot_rows = (len(af_fields)+1)//2
